@@ -56,11 +56,17 @@ Instalamos las dependencias con pip:
 pip3 install -r flaskr/requirements.txt 
 ```
 
-En un terminal distinto a donde se está ejecutando la aplicación, ejecutar los seeders para llenar la base de datos con los datos iniciales:
+En un terminal distinto a donde se está ejecutando la aplicación, ejecutar los seeders de la colección Productions para llenar la base de datos con los datos iniciales:
+```
+mongoimport -d moviesbdnr -c production --file ./flaskr/seeders/production.json --jsonArray
+```
+
+> [!NOTE]  
+> Si no ha realizado la práctica, deberá también ejecutar los seeders para user y movies, tal y como se indica en el siguiente fragmento de código.
+
 ```
 mongoimport -d moviesbdnr -c user --file ./flaskr/seeders/user.json --jsonArray
 mongoimport -d moviesbdnr -c movie --file ./flaskr/seeders/movie.json --jsonArray
-mongoimport -d moviesbdnr -c production --file ./flaskr/seeders/production.json --jsonArray
 ```
 
 Comprobar que los datos han sido guardados en cada una de las colecciones. Para ello, se debe usar la mongo shell para conectarse a la bbdd y realizar un find en cada una de las colecciones.
